@@ -1,3 +1,5 @@
+
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
@@ -15,24 +17,30 @@ public class Book {
     private String author;
     private double price;
     private String publisher;
-    private double isbn;
+    private String isbn;
     
     //default constructor
     public Book(){
+        this.author = " ";
+        this.title = " ";
+        this.publisher= " ";
+        this.price = 0;
+        this.isbn = " ";
         
     }
     
     //constructor with title
     public Book(String title){
-        this.title = title;
+        this.title = toTitleCase(title);
+        
         
     }
     
     //constructor woth all data members
     public Book(String title, String author, 
-            double price, String publisher, double isbn){
-        this.title = title;
-        this.author = author;
+            double price, String publisher, String isbn){
+        this.title = toTitleCase(title);
+        this.author = toTitleCase(author);
         this.price = price;
         this.publisher = publisher;
         this.isbn = isbn;
@@ -47,26 +55,33 @@ public class Book {
         this.isbn = anotherBook.isbn;
     }
     
-    public void checkIsbnStatus(){
-        if (isbn.length() = 13){
-           System.out.println("0");
-            if (isbn.length() = 17) 
-                System.out.println("1");
+    public int checkIsbnStatus(){
+        if (isbn.length() == 13){
+           return 0;
+}
+           if (isbn.length() == 17) 
+               return 1;
             else 
-                System.out.println("-1");
+                return -1;
         }   
+    
+    
+    public static String toTitleCase(String str){
+        String [] word = str.toLowerCase().split(" ");
+        
+        for (int i = 0; i < word.length; i ++) {
+           word[i] = word[i].substring(0, 1).toUpperCase() + word[i].substring(1);
+        }
+       
     }
     
-    public String toTitleCase(String str){
-           return str.substring(0, 1).toUpperCase() + str.substring(1).toLowerCase(); 
-    }
-    
-    public String toSting(){
-        String str = String.format("%-15s:%s/n","Title", title);
-        str += String.format("%-15s:%s/n","Author: ", author);
-        str += String.format("%-15s: %s", "Price", price);
-        str += String.format("%-15s:5s/n","Publisher", publisher);
-        str += String.format("%15s:%s","Isbn", isbn);
+    @Override
+    public String toString(){
+        String str = String.format("%-15s: %s\n","Title", title);
+        str += String.format("%-15s: %s\n","Author: ", author);
+        str += String.format("%-15s: %s\n", "Price", price);
+        str += String.format("%-15s: %s\n","Publisher", publisher);
+        str += String.format("%-15s: %s\n","ISBN", isbn);
          return str;
     }
     
@@ -76,7 +91,7 @@ public class Book {
                 author.equals(anotherBook.author) &&
                 price == anotherBook.price &&
                 publisher.equals(anotherBook.publisher) &&
-                isbn == anotherBook.isbn;
+                isbn.equals(anotherBook.isbn);
     }
     
     //clone
@@ -104,13 +119,13 @@ public class Book {
         return publisher;
     }
     
-    public double getIsbn(){
+    public String getIsbn(){
       return isbn;  
     }
 
     
     //setter
-     public void setTitle(){
+     public void setTitle(String title){
         this.title = title;
     }
     
@@ -126,7 +141,7 @@ public class Book {
         this.publisher = publisher;
     }
     
-    public void setIsbn(double isbn){
+    public void setIsbn(String isbn){
         this.isbn = isbn;
     }
 
