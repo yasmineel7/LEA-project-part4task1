@@ -39,9 +39,9 @@ public Library(Library anotherLibrary){
 
 public ArrayList<Book> searchBook(String keyword){
     ArrayList<Book> book1 = new ArrayList();
-     for (Book book: book){
-        if (book.toString().toLowerCase().contains(keyword.toLowerCase())){
-              book1.add(book); 
+     for (Book book2: book){
+        if (book2.toString().toLowerCase().contains(keyword.toLowerCase())){
+              book1.add(book2); 
         }
      }
      return book1;
@@ -57,8 +57,8 @@ public boolean equals(Library anotherLibrary){
 @Override
 public String toString(){
     String str = "Books \n";
-    for (Book book: book){
-        str += book.toString() + "\n";
+    for (Book book2: book){
+        str += book2.toString() + "\n";
     }
     return String.format(str);
 }
