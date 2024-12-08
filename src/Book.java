@@ -32,7 +32,10 @@ public class Book {
     //constructor with title
     public Book(String title){
         this.title = toTitleCase(title);
-        
+        this.author = " ";
+        this.publisher= " ";
+        this.price = 0;
+        this.isbn = " ";
         
     }
     
@@ -72,7 +75,8 @@ public class Book {
         for (int i = 0; i < word.length; i ++) {
            word[i] = word[i].substring(0, 1).toUpperCase() + word[i].substring(1);
         }
-       
+       String str2 = String.join(" ", word);
+       return str2;
     }
     
     @Override
